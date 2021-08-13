@@ -1,0 +1,39 @@
+CREATE TABLE "MASTER_DB "."TENANT_DB_LIST" 
+   (	"DATABASE_ID" VARCHAR2(20 BYTE) NOT NULL ENABLE, 
+	"DB_NAME" VARCHAR2(200 BYTE) NOT NULL ENABLE, 
+	"DB_PASSWORD" VARCHAR2(200 BYTE) NOT NULL ENABLE, 
+	"DB_URL" VARCHAR2(200 BYTE) NOT NULL ENABLE, 
+	 CONSTRAINT "TENANT_DB_LIST_PK" PRIMARY KEY ("DATABASE_ID");
+	 
+Insert into MASTER_DB .TENANT_DB_LIST (DATABASE_ID,DB_NAME,DB_PASSWORD,DB_URL) values ('1001','TENANT_DB_1','TENANT_DB_1','localhost:1521/DB12C');
+Insert into MASTER_DB .TENANT_DB_LIST (DATABASE_ID,DB_NAME,DB_PASSWORD,DB_URL) values ('1002','TENANT_DB_2','TENANT_DB_2','localhost:1521/DB12C');
+commit;
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE "TENANT_DB_1"."USERS" 
+   (	"USER_ID" VARCHAR2(200 BYTE), 
+	"USER_NAME" VARCHAR2(200 BYTE), 
+	"PHONE_NO" VARCHAR2(200 BYTE), 
+	"EMAIL_ID" VARCHAR2(200 BYTE),
+	 CONSTRAINT "USERS_PK" PRIMARY KEY ("USER_ID")
+   );
+
+Insert into TENANT_DB_1.USERS (USER_ID,USER_NAME,PHONE_NO,EMAIL_ID) values ('RD','Rahul Dravid','8790989809','rahul.dravid@bcci.tv');
+Insert into TENANT_DB_1.USERS (USER_ID,USER_NAME,PHONE_NO,EMAIL_ID) values ('ST','Sachin Tendulkar','9878098765','sachin.tendulkar@bcci.tv');
+commit;
+
+//
+
+CREATE TABLE "TENANT_DB_2"."USERS" 
+   (	"USER_ID" VARCHAR2(200 BYTE), 
+	"USER_NAME" VARCHAR2(200 BYTE), 
+	"PHONE_NO" VARCHAR2(200 BYTE), 
+	"EMAIL_ID" VARCHAR2(200 BYTE),
+	CONSTRAINT "USERS_PK" PRIMARY KEY ("USER_ID")
+   );
+Insert into TENANT_DB_2.USERS (USER_ID,USER_NAME,PHONE_NO,EMAIL_ID) values ('RP','Ricky Ponting','9900887765','ricky.ponting@ca.au');
+Insert into TENANT_DB_2.USERS (USER_ID,USER_NAME,PHONE_NO,EMAIL_ID) values ('BL','Brett Lee','6677887766','brett.lee@ca.au');   
+commit;
+	 
+ 
